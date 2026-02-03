@@ -1,0 +1,95 @@
+# SPDX-License-Identifier: MIT
+
+# ---- ZEPHYR/NRF CORE (Minimal settings for the chip) ----
+CONFIG_SOC_SERIES_NRF52X=y
+CONFIG_SOC_NRF52840_QIAA=y
+CONFIG_BOARD_ad44=y
+
+# Memory/System
+CONFIG_MPU_ALLOW_FLASH_WRITE=y
+CONFIG_NVS=y
+CONFIG_SETTINGS_NVS=y
+CONFIG_FLASH=y
+CONFIG_FLASH_PAGE_LAYOUT=y
+CONFIG_FLASH_MAP=y
+CONFIG_ARM_MPU=y
+
+# ---- DRIVERS (REQUIRED FOR HARDWARE/WIDGET) ----
+CONFIG_PINCTRL=y
+CONFIG_GPIO=y
+CONFIG_I2C=y
+CONFIG_I2C_NRFX=y
+CONFIG_LED=y
+CONFIG_LED_PWM=y
+CONFIG_PWM=y
+CONFIG_MAX17048=y
+
+
+# Bootloader/UF2
+CONFIG_USE_DT_CODE_PARTITION=y
+CONFIG_BUILD_OUTPUT_UF2=y
+
+
+#------ ZMK settings ------
+
+CONFIG_ZMK_USB=y
+CONFIG_ZMK_USB_BOOT=y
+CONFIG_ZMK_BLE=y
+
+# needed for capslock led control module
+CONFIG_ZMK_HID_INDICATORS=y
+CONFIG_CAPS_LOCK_LED=y
+
+# layer leds control module 
+CONFIG_LAYER_LEDS=y
+
+# Enable deep sleep
+CONFIG_ZMK_SLEEP=y
+
+# Enable LEDs by ebastlergithub
+CONFIG_LED_GPIO=y
+
+
+# Enable experimental BLE features to improve stability
+CONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y
+# Uncomment the following line to increase the keyboard's wireless range
+#CONFIG_BT_CTLR_TX_PWR_PLUS_8=y
+
+# enable leds backlight 
+CONFIG_ZMK_BACKLIGHT=y
+CONFIG_ZMK_BACKLIGHT_AUTO_OFF_IDLE=y
+CONFIG_ZMK_BACKLIGHT_ON_START=n
+CONFIG_ZMK_BACKLIGHT_BRT_STEP=1
+CONFIG_ZMK_BACKLIGHT_BRT_START=1 
+
+
+# Enable eager debouncing
+CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS=1
+CONFIG_ZMK_KSCAN_DEBOUNCE_RELEASE_MS=10
+
+# Enable ZMK Studio for Realtime Keymap Updates
+#CONFIG_ZMK_STUDIO=y
+#CONFIG_ZMK_STUDIO_LOCKING=n 
+
+
+
+# enable zmk-poor-mans-led-indicator
+CONFIG_INDICATOR_LED_WIDGET=y
+CONFIG_INDICATOR_LED_SHOW_BLE=y
+CONFIG_INDICATOR_LED_SHOW_BATTERY_ON_BOOT=y
+CONFIG_INDICATOR_LED_SHOW_LAYER_CHANGE=n
+##CONFIG_INDICATOR_LED_SHOW_CRITICAL_BATTERY_CHANGES=y
+##CONFIG_INDICATOR_LED_BATTERY_LEVEL_CRITICAL = 10
+
+
+
+
+# Turn on all logging, and set ZMK logging to debug output
+# uncomment snippet in build.yml 
+#CONFIG_LOG=y
+#CONFIG_ZMK_USB_LOGGING=y  # Explicitly enable if the snippet doesn't suffice. typically handled by the zmk-usb-logging snippet
+#CONFIG_USB_CDC_ACM=y
+#CONFIG_ZMK_LOG_LEVEL_DBG=y
+#CONFIG_PWM_LOG_LEVEL_DBG=y  # For PWM LED debugging
+#CONFIG_LED_LOG_LEVEL_DBG=y  # For LED driver logs
+
